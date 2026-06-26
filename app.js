@@ -3,7 +3,7 @@ const LINKS = {
   alfa: "https://alfa.me/biU712",
 };
 
-const SITE_URL = "https://soc-opros.vercel.app";
+const SITE_URL = "https://saggda.github.io/soc-opros/";
 const OK_SHARE_TEXT = "Пройдите короткий соцопрос — узнайте, какие возможности вам могут быть доступны";
 
 const REGIONS = [
