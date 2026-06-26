@@ -7,26 +7,90 @@ const SITE_URL = "https://saggda.github.io/soc-opros/";
 const OK_SHARE_TEXT = "Пройдите короткий соцопрос — узнайте, какие возможности вам могут быть доступны";
 
 const REGIONS = [
-  "Москва",
-  "Санкт-Петербург",
-  "Московская область",
-  "Краснодарский край",
-  "Свердловская область",
-  "Ростовская область",
-  "Республика Татарстан",
-  "Нижегородская область",
-  "Новосибирская область",
-  "Челябинская область",
-  "Самарская область",
-  "Красноярский край",
-  "Воронежская область",
-  "Пермский край",
-  "Волгоградская область",
-  "Саратовская область",
-  "Тюменская область",
-  "Кемеровская область",
-  "Иркутская область",
   "Алтайский край",
+  "Амурская область",
+  "Архангельская область",
+  "Астраханская область",
+  "Белгородская область",
+  "Брянская область",
+  "Владимирская область",
+  "Волгоградская область",
+  "Вологодская область",
+  "Воронежская область",
+  "Ивановская область",
+  "Иркутская область",
+  "Кабардино-Балкарская Республика",
+  "Калининградская область",
+  "Калужская область",
+  "Камчатский край",
+  "Карачаево-Черкесская Республика",
+  "Кемеровская область",
+  "Кировская область",
+  "Костромская область",
+  "Краснодарский край",
+  "Красноярский край",
+  "Курганская область",
+  "Курская область",
+  "Ленинградская область",
+  "Липецкая область",
+  "Магаданская область",
+  "Москва",
+  "Московская область",
+  "Мурманская область",
+  "Ненецкий автономный округ",
+  "Нижегородская область",
+  "Новгородская область",
+  "Новосибирская область",
+  "Омская область",
+  "Оренбургская область",
+  "Орловская область",
+  "Пензенская область",
+  "Пермский край",
+  "Приморский край",
+  "Псковская область",
+  "Республика Адыгея",
+  "Республика Алтай",
+  "Республика Башкортостан",
+  "Республика Бурятия",
+  "Республика Дагестан",
+  "Республика Ингушетия",
+  "Республика Калмыкия",
+  "Республика Карелия",
+  "Республика Коми",
+  "Республика Крым",
+  "Республика Марий Эл",
+  "Республика Мордовия",
+  "Республика Саха (Якутия)",
+  "Республика Северная Осетия — Алания",
+  "Республика Татарстан",
+  "Республика Тыва",
+  "Республика Хакасия",
+  "Ростовская область",
+  "Рязанская область",
+  "Самарская область",
+  "Санкт-Петербург",
+  "Саратовская область",
+  "Сахалинская область",
+  "Свердловская область",
+  "Севастополь",
+  "Смоленская область",
+  "Ставропольский край",
+  "Тамбовская область",
+  "Тверская область",
+  "Томская область",
+  "Тульская область",
+  "Тюменская область",
+  "Удмуртская Республика",
+  "Ульяновск",
+  "Ульяновская область",
+  "Хабаровский край",
+  "Ханты-Мансийский автономный округ — Югра",
+  "Челябинская область",
+  "Чеченская Республика",
+  "Чувашская Республика",
+  "Чукотский автономный округ",
+  "Ямало-Ненецкий автономный округ",
+  "Ярославская область",
   "Другой регион",
 ];
 
@@ -40,12 +104,12 @@ const BANKS = [
   { id: "none", label: "Нигде нет" },
 ];
 
-const BENEFITS = [
-  { id: "utilities", label: "Возврат при оплате коммуналки" },
+const INTERESTS = [
+  { id: "utilities", label: "Коммуналка без переплат" },
   { id: "free_service", label: "Бесплатное обслуживание" },
-  { id: "pharmacy", label: "Скидки в аптеках" },
-  { id: "groceries", label: "Скидки на продукты" },
-  { id: "savings", label: "Накопления под проценты" },
+  { id: "pharmacy", label: "Выгода в аптеках" },
+  { id: "groceries", label: "Выгода в магазинах" },
+  { id: "savings", label: "Накопления под процент" },
 ];
 
 const STEPS = [
@@ -63,44 +127,22 @@ const STEPS = [
   {
     id: "region",
     title: "В каком регионе вы живёте?",
-    hint: "Начните вводить название или выберите из списка",
+    hint: "Введите название или прокрутите список",
     type: "region",
   },
   {
     id: "banks",
     title: "Где у вас уже есть оформление?",
-    hint: "Можно выбрать несколько вариантов",
+    hint: "Можно выбрать несколько",
     type: "multi",
     options: BANKS,
   },
   {
-    id: "benefits",
-    title: "Что из этого у вас уже есть?",
-    hint: "Отметьте всё, что подходит. Если не уверены — выберите «Не знаю»",
-    type: "benefits",
-    options: BENEFITS,
-  },
-  {
-    id: "utilities_spend",
-    title: "Сколько примерно уходит на коммуналку в месяц?",
-    hint: "Примерная сумма — для подсказки по возможностям",
-    type: "single",
-    options: [
-      { value: "low", label: "До 3 000 ₽" },
-      { value: "mid", label: "3 000–6 000 ₽" },
-      { value: "high", label: "Больше 6 000 ₽" },
-    ],
-  },
-  {
-    id: "social",
-    title: "Получаете ли регулярные социальные начисления?",
-    hint: "Например, пенсию или другие регулярные выплаты",
-    type: "single",
-    options: [
-      { value: "yes", label: "Да" },
-      { value: "no", label: "Нет" },
-      { value: "unknown", label: "Не знаю" },
-    ],
+    id: "interests",
+    title: "Что для вас важно?",
+    hint: "Отметьте один или несколько пунктов",
+    type: "interests",
+    options: INTERESTS,
   },
 ];
 
@@ -110,9 +152,7 @@ const state = {
     age: null,
     region: null,
     banks: [],
-    benefits: {},
-    utilities_spend: null,
-    social: null,
+    interests: [],
   },
 };
 
@@ -156,9 +196,7 @@ function resetQuiz() {
     age: null,
     region: null,
     banks: [],
-    benefits: {},
-    utilities_spend: null,
-    social: null,
+    interests: [],
   };
 }
 
@@ -175,14 +213,10 @@ function canProceed(step) {
   const id = step.id;
   const answers = state.answers;
 
-  if (id === "age" || id === "utilities_spend" || id === "social") {
-    return Boolean(answers[id]);
-  }
+  if (id === "age") return Boolean(answers.age);
   if (id === "region") return Boolean(answers.region);
   if (id === "banks") return answers.banks.length > 0;
-  if (id === "benefits") {
-    return BENEFITS.every((b) => answers.benefits[b.id]);
-  }
+  if (id === "interests") return answers.interests.length > 0;
   return false;
 }
 
@@ -242,33 +276,29 @@ function renderQuestion() {
     `;
   }
 
-  if (step.type === "benefits") {
-    body += step.options
-      .map((benefit) => {
-        const current = state.answers.benefits[benefit.id];
-        return `
-          <div style="margin-bottom: 18px;">
-            <p style="margin: 0 0 10px; font-weight: 600;">${benefit.label}</p>
-            <div class="options options--grid-2">
-              ${["yes", "no", "unknown"]
-                .map((val) => {
-                  const labels = { yes: "Да", no: "Нет", unknown: "Не знаю" };
-                  return `
-                    <button
-                      type="button"
-                      class="option-btn ${current === val ? "option-btn--selected" : ""}"
-                      data-action="pick-benefit"
-                      data-benefit="${benefit.id}"
-                      data-value="${val}"
-                    >${labels[val]}</button>
-                  `;
-                })
-                .join("")}
-            </div>
-          </div>
-        `;
-      })
-      .join("");
+  if (step.type === "interests") {
+    const allSelected = INTERESTS.every((item) => state.answers.interests.includes(item.id));
+    body += `
+      <button
+        type="button"
+        class="option-btn ${allSelected ? "option-btn--selected" : ""}"
+        data-action="pick-all-interests"
+        style="margin-bottom: 12px;"
+      >Всё перечисленное</button>
+      <div class="options">${step.options
+        .map((item) => {
+          const selected = state.answers.interests.includes(item.id);
+          return `
+            <button
+              type="button"
+              class="option-btn option-btn--multi ${selected ? "option-btn--selected" : ""}"
+              data-action="pick-interest"
+              data-value="${item.id}"
+            >${item.label}</button>
+          `;
+        })
+        .join("")}</div>
+    `;
   }
 
   const isLast = state.step === STEPS.length - 1;
@@ -292,7 +322,7 @@ function renderQuestion() {
     const list = document.getElementById("region-list");
     const renderRegions = (query = "") => {
       const q = query.trim().toLowerCase();
-      const filtered = REGIONS.filter((r) => r.toLowerCase().includes(q));
+      const filtered = REGIONS.filter((r) => r.toLowerCase().includes(q)).slice(0, 80);
       list.innerHTML = filtered
         .map(
           (region) => `
@@ -344,32 +374,24 @@ function hasBank(id) {
   return banks.includes(id);
 }
 
+const INTEREST_LINES = {
+  utilities: "Оплата коммуналки без лишних переплат",
+  free_service: "Бесплатное обслуживание при регулярных начислениях",
+  pharmacy: "Возврат за покупки в аптеках",
+  groceries: "Возврат за покупки в магазинах",
+  savings: "Накопления под повышенный процент",
+};
+
 function buildPersonalLines() {
   const lines = [];
-  const { benefits, social, utilities_spend } = state.answers;
+  const { interests, age } = state.answers;
 
-  if (benefits.utilities === "no" || benefits.utilities === "unknown") {
-    lines.push("Оплата коммуналки без лишних переплат");
-  }
-  if (benefits.free_service === "no" || benefits.free_service === "unknown") {
-    lines.push("Бесплатное обслуживание при регулярных начислениях");
-  }
-  if (benefits.pharmacy === "no" || benefits.pharmacy === "unknown") {
-    lines.push("Возврат за покупки в аптеках");
-  }
-  if (benefits.groceries === "no" || benefits.groceries === "unknown") {
-    lines.push("Возврат за покупки в магазинах");
-  }
-  if (benefits.savings === "no" || benefits.savings === "unknown") {
-    lines.push("Накопления под повышенный процент");
-  }
+  interests.forEach((id) => {
+    if (INTEREST_LINES[id]) lines.push(INTEREST_LINES[id]);
+  });
 
-  if (social === "yes") {
+  if (age === "55-70" || age === "70plus") {
     lines.push("Удобно для регулярных социальных начислений");
-  }
-
-  if (utilities_spend === "mid" || utilities_spend === "high") {
-    lines.push("Подходит, если коммуналка занимает заметную часть бюджета");
   }
 
   return [...new Set(lines)];
@@ -549,8 +571,20 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  if (action === "pick-benefit") {
-    state.answers.benefits[target.dataset.benefit] = target.dataset.value;
+  if (action === "pick-interest") {
+    const value = target.dataset.value;
+    const list = [...state.answers.interests];
+    if (list.includes(value)) {
+      state.answers.interests = list.filter((id) => id !== value);
+    } else {
+      state.answers.interests = [...list, value];
+    }
+    renderQuestion();
+    return;
+  }
+
+  if (action === "pick-all-interests") {
+    state.answers.interests = INTERESTS.map((item) => item.id);
     renderQuestion();
     return;
   }
