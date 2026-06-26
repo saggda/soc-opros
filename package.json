@@ -1,0 +1,10 @@
+{
+  "name": "soc-opros",
+  "version": "1.0.0",
+  "private": true,
+  "description": "СоцОпрос — анонимный социальный опросник с рекомендациями",
+  "scripts": {
+    "dev": "npx --yes serve . -p 3456",
+    "start": "npx --yes serve . -p 3456"
+  }
+}

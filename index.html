@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>СоцОпрос — короткая проверка доступных возможностей</title>
+  <meta name="description" content="Пройдите короткий социальный опрос за 2 минуты и узнайте, какие возможности вам могут быть доступны. Бесплатно и без регистрации.">
+  <meta name="theme-color" content="#f4f7fb">
+  <meta property="og:title" content="СоцОпрос — короткая проверка доступных возможностей">
+  <meta property="og:description" content="Пройдите короткий социальный опрос за 2 минуты. Бесплатно и без регистрации.">
+  <meta property="og:url" content="https://soc-opros.vercel.app">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232f6fed'/><path d='M28 52 L44 68 L72 36' stroke='white' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-blob bg-blob--1" aria-hidden="true"></div>
+  <div class="bg-blob bg-blob--2" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#" data-action="home" aria-label="СоцОпрос — на главную">
+        <span class="logo__mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10.5L8 14.5L16 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo__text">СоцОпрос</span>
+      </a>
+      <span class="header__badge">Бесплатно · 2 мин</span>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+
+      <!-- LANDING -->
+      <section class="screen screen--active" id="screen-landing" data-screen="landing">
+        <div class="hero card card--hero">
+          <div class="hero__eyebrow">Анонимная проверка</div>
+          <h1 class="hero__title">Узнайте за&nbsp;2&nbsp;минуты, какие возможности вам могут быть доступны</h1>
+          <p class="hero__lead">Короткий социальный опрос без регистрации. Ответьте на несколько простых вопросов — мы подскажем, что может подойти именно вам.</p>
+
+          <ul class="hero__features">
+            <li>
+              <span class="hero__icon" aria-hidden="true">✓</span>
+              Полностью бесплатно
+            </li>
+            <li>
+              <span class="hero__icon" aria-hidden="true">✓</span>
+              Без звонков и сообщений
+            </li>
+            <li>
+              <span class="hero__icon" aria-hidden="true">✓</span>
+              Данные не сохраняются
+            </li>
+          </ul>
+
+          <button class="btn btn--primary btn--lg" type="button" data-action="start-quiz">
+            Начать опрос
+            <svg class="btn__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <p class="hero__note">Уже проходили? <button class="link-btn" type="button" data-action="start-quiz">Пройти снова</button></p>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-pill">Понятные вопросы</div>
+          <div class="trust-pill">Крупный текст</div>
+          <div class="trust-pill">С телефона и компьютера</div>
+        </div>
+      </section>
+
+      <!-- QUIZ -->
+      <section class="screen" id="screen-quiz" data-screen="quiz">
+        <div class="quiz card">
+          <div class="quiz__top">
+            <button class="back-btn" type="button" data-action="back" aria-label="Назад">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Назад
+            </button>
+            <div class="progress" aria-live="polite">
+              <div class="progress__meta">
+                <span class="progress__label">Вопрос <span id="progress-current">1</span> из <span id="progress-total">6</span></span>
+                <span class="progress__pct" id="progress-pct">0%</span>
+              </div>
+              <div class="progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar">
+                <div class="progress__fill" id="progress-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz__body" id="quiz-body"></div>
+        </div>
+      </section>
+
+      <!-- RESULTS -->
+      <section class="screen" id="screen-results" data-screen="results">
+        <div class="results">
+          <div class="results__head card">
+            <div class="results__eyebrow">Результат опроса</div>
+            <h2 class="results__title" id="results-title">По вашим ответам вам может подойти</h2>
+            <p class="results__subtitle" id="results-subtitle">Ниже — варианты, которые можно оформить с доставкой на дом. Переход ведёт на официальный сайт.</p>
+          </div>
+
+          <div class="results__cards" id="results-cards"></div>
+
+          <div class="results__actions card card--soft">
+            <button class="btn btn--ok btn--lg" type="button" id="ok-share-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.15"/>
+                <text x="12" y="16" text-anchor="middle" fill="currentColor" font-size="11" font-weight="700">OK</text>
+              </svg>
+              Поделиться в Однокласниках
+            </button>
+            <button class="btn btn--ghost btn--lg" type="button" data-action="restart">Пройти опрос заново</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>Опрос анонимный — персональные данные не сохраняются.</p>
+      <p>Для статистики используются cookie. <button class="link-btn" type="button" data-action="home">На главную</button></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
